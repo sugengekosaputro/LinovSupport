@@ -1,0 +1,68 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">link_1</a></li>
+  <li class="breadcrumb-item"><a href="#">link_2</a></li>
+  <li class="breadcrumb-item active">This Page</li>
+</ol>
+
+<h2>Tambah Account</h2>
+<hr>
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+  {{ accountForm.value | json }}
+  <hr>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <input type="text" formControlName="idAccount" class="form-control form-control-sm" hidden>
+      <div class="form-group">
+        <label for="">Nama Account</label>
+        <input type="text" formControlName="nama" id="namaAccount" class="form-control form-control-sm">
+        <small id="helpId" class="text-muted"><i>PT.ABC</i></small>
+      </div>
+      <div class="form-group">
+        <label for="">No.Telepon</label>
+        <input type="text" formControlName="telepon" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted"><i>(021)-99988xxx</i></small>
+      </div>
+      <div class="form-group">
+        <label for="">Alamat</label>
+        <textarea formControlName="alamat" class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <small id="helpId" class="text-muted"><i>Jl.Raya No.1</i></small>
+      </div>
+      <div class="form-group">
+        <label for="">Logo Client</label>
+        <input type="file" class="form-control-file" (change)="onFileSelected($event)" style="margin-bottom: 10px">
+        <img [src]="pathImg" *ngIf="pathImg" class="img-fluid rounded" alt="">
+        <small id="fileHelpId" class="form-text text-muted"><i>*Maximal size 2MB</i></small>
+      </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div formArrayName="pics">
+        <div *ngFor="let pic of picForms.controls; let i=index" [formGroupName]="i">
+          <div class="form-group">
+            <label for="">Nama</label>
+            <input type="text" formControlName="nama" id="namaPIC" class="form-control form-control-sm" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" formControlName="email" class="form-control form-control-sm" placeholder="">
+          </div>
+          <div class="form-group">
+            <button type="button" (click)="deletePic(i)" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" (click)="addPic()" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus"></i> Tambah PIC</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group">
+          <button type="submit" class="btn btn-outline-dark btn-sm"><i class="fa fa-arrow-left"></i> Batal</button>
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
+      </div>
+    </div>
+  </div>
+</form>

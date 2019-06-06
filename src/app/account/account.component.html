@@ -1,0 +1,82 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item active">Account</li>
+</ol>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+<p-growl class="fixed-top" [(value)]="msgs"></p-growl>
+
+<h2>Account</h2>
+
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <button pButton type="button" routerLink="/account/tambah" icon="fa fa-plus" label="Account"></button>
+  </div>
+  
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <!-- <form class="form-inline">
+      <div class="form-group">
+        <label for="">Filter : </label>
+        <select class="form-control" name="" id="">
+          <option>Select 1</option>
+          <option>Select 2</option>
+          <option>Select 3</option>
+        </select>
+      </div>
+    </form> -->
+  </div>
+</div>
+
+<table class="table table-striped table-inverse table-bordered data-table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Account</th>
+      <th>PIC</th>
+      <th>Agent</th>
+      <th>Logo</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let acc of accounts">
+      <td>{{ acc.nama }} </td>
+      <td>{{ acc.pics.length }}</td>
+      <td *ngIf="acc.agen == null; else name">kosong</td>
+      <ng-template #name>
+        <td>{{acc.agen.nama | uppercase}}</td>
+      </ng-template>
+      <td><img src="data:image/jpeg;base64,{{acc.gambar.gambar}}" width="200" height="200"></td>
+      <td>
+        <button class="btn btn-warning btn-sm" routerLink="/account/preview/{{acc.idAccount}}">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
+        
+        <!-- <ng-container *ngIf="acc.agen == null; else noBtn">
+          
+        </ng-container>
+        <ng-template #noBtn>
+          <a name="" id="" class="btn btn-primary" href="#" role="button"></a>
+        </ng-template> -->
+        
+        <ng-container *ngIf="acc.agen == null; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-template #thenTemplate>
+          <button (click)="toastMessage()" class="btn btn-danger btn-sm">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </ng-template>
+        <ng-template #elseTemplate>
+          gak ada lagi
+        </ng-template>
+        
+        
+        <button class="btn btn-primary btn-sm" (click)="confirmDelete(acc.idAccount,acc.nama)">tes confirm</button>
+      </td>
+    </tr>
+    <tr *ngIf="accounts == 0">
+      <td colspan="4"><strong>Data tidak ditemukan!</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<footer class="navbar footer fixed-bottom footer-light footer-shadow navbar-dark bg-primary content container-fluid">
+  asdasdasd
+</footer>

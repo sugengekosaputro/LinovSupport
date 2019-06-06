@@ -1,0 +1,57 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">link_1</a></li>
+  <li class="breadcrumb-item"><a href="#">link_2</a></li>
+  <li class="breadcrumb-item active">This Page</li>
+</ol>
+
+<h2>Tambah Agen</h2>
+
+<form [formGroup] = "agenForm" (ngSubmit)="onSubmit()">
+  {{agenForm.value | json}}
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group" formGroupName="account">
+        <label for="">Pilih Account</label>
+        <select class="form-control" formControlName="idAccount" id="">
+          <option value="">Select Account</option>
+          <option *ngFor="let acc of accounts" value="{{acc.idAccount}}">
+            {{acc.nama}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Nama Agen</label>
+        <input type="text" formControlName="nama" class="form-control form-control-sm" aria-describedby="helpId">
+      </div>
+      <div class="form-group">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" formControlName="email" class="form-control form-control-sm" pInputText> 
+          <label for="float-input">Email</label>
+        </span>
+      </div>
+      <div class="form-group">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" formControlName="username" class="form-control form-control-sm" pInputText> 
+          <label for="float-input">Username</label>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" formControlName="password" class="form-control form-control-sm" aria-describedby="helpId">
+      </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
+        <button type="reset" class="btn btn-outline-dark btn-sm"><i class="fa fa-close"></i> Batal</button>
+      </div>
+    </div>
+  </div>
+</form>

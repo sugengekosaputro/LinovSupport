@@ -1,0 +1,41 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Agen</a></li>
+</ol>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<h2>Agen</h2>
+
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <a name="" id="" class="btn btn-outline-primary btn-sm" routerLink="/agen/tambah" role="button">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-striped table-inverse table-bordered data-table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Nama</th>
+      <th>Email</th>
+      <th>Account</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let agen of agents">
+      <td scope="row">{{agen.nama}}</td>
+      <td>{{agen.email}}</td>
+      <td>{{agen.account.idAccount}}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="confirmDelete(agen.idAgen,agen.nama)">
+          <i class="fa fa-trash" aria-hidden="true"></i> Hapus
+        </button></td>
+    </tr>
+  </tbody>
+</table>
+
+<footer class="navbar footer fixed-bottom footer-light footer-shadow navbar-dark bg-primary content container-fluid">
+  asdasdasd
+</footer>

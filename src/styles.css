@@ -1,8 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-.container-fluid {
-  padding-top: 30px;
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body{
+  height: 100%;
+  background-color: lightgrey;
+}
+.container{
+  padding-top: 70px;
+}
+
+.data-table {
+  margin-top: 20px;
 }
 
 .card {
-  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.link-href {
+  color: dodgerblue
+}
+
+.link-href:hover{
+  color: white;
+  text-decoration-line: none;
 }
